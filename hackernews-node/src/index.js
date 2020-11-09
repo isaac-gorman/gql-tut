@@ -1,10 +1,18 @@
 const {GraphQLServer} = require('graphql-yoga')
 
-let links = [{
-    id: 'link-0',
-    url: 'www.howtographql.com',
-    description: 'Fullstack tutorial for GraphQL'
-  }]
+let links = [
+    {
+        id: 'link-0',
+        url: 'www.howtographql.com',
+        description: 'Fullstack tutorial for GraphQL'
+    },
+    {
+        id: 'link-1',
+        url: 'www.web.com',
+        description: 'web stuff'
+    },
+
+]
   
 
   let idCount = links.length
@@ -12,6 +20,12 @@ let links = [{
     Query: {
       info: () => `This is the API of a Hackernews Clone`,
       feed: () => links,
+      link: (parent, {id}) => {
+         let link = links.find(i =>  i.id == id)
+         console.log("link:", link)
+         console.log("id:", id)
+         return link
+        }
     },
     Mutation: {
       post: (parent, args) => {
