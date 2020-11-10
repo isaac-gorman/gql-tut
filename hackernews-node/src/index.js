@@ -35,7 +35,25 @@ let links = [
           url: args.url,
         }
         links.push(link)
+        console.log("idCount:", idCount)
         return link
+      },
+      updateLink: (parent, args) => {
+        let updatedLink;
+        
+        console.log("links:", links)
+        links = links.map(link => {
+          if (link.id === args.id) {
+              console.log("link:", link)
+              console.log("args:", args)
+            updatedLink = { ...link, ...args };
+            return updatedLink;
+          }
+          return link;
+        });
+        
+        console.log("updatedLink:", updatedLink)
+        return updatedLink;
       }
     },
   }
