@@ -60,3 +60,17 @@
 // - Q: What is the logic going on in the src/utils.js file? 
 // - A: The "getUserId" function is merly a helper function that can be called within the context object which requires authentication, such as for post muation queries. 
 // - A: The getUsersId function first retrives the Authorization header (which containsthe User's JWT) from context? But how ...? 
+
+// - Q: What is the minor issue with the way the request object is set up?
+// - A: I am accessing the request via the context object. 
+// - A: This is an issue because when I intialize context, I am only intiating the prisma instance, there is no request object attached to it. 
+// - A: By passing a function like operation into the context object I will be able to make the getUserById() function possible to authenticate any users against the server to access that database.
+// - Q: Instead of attaching an object directly into context how am I handeling context now to account for the authtication request? 
+// - A: I am writing context as a function which will return the context. 
+// - Q: What is the advantage of this approach? 
+// - A: The advantage of impementing context as function is that I can now attach the HTTP that carries the incoming GraphQL query or mutation to context as well. Which will probably be benficial for the client send request for data. Now this enables the resolvers to read the Authorization header and validate if the user who just submited the request has the persmison to preform such a request or operation. 
+
+// - 6 Requiring Authentication for the post mutation? 
+// - Q: What are the two things that are different in this implementaion than before?
+// - 1: I am using the getUserId() to retrive the ID of the User
+// - 2: I am then using the userId to connect to the Link to be created by the User who is creating it. The connect: {} object serves as a "nested write" to basically connect the newly created post to the matching userId. I have already used the "create" nested write that allows me to create a new row in the table and in this situation a new Link. There is also the connectOrCreate nested wirte which would enable me to create a new user and connect it to existing post. 

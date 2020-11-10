@@ -1,17 +1,22 @@
-const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
-const {APP_SECRET, getUserId} = require("../utils")
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const { APP_SECRET, getUserId } = require('../utils')
 
-
-function post(parent, args, contex, info){
-      const newLink = contex.prisma.link.create({
-        data: {
-          url: args.url,
-          description: args.description
-        },
-      })
-      return newLink
-    }
+function post(parent, args, context, info) {
+    const userId = getUserId(context)
+    console.log("userId:", userId)
+  
+    const newLink = context.prisma.link.create({
+      data: {
+        url: args.url,
+        description: args.description,
+        postedBy: { connect: { id: userId } },
+      }
+    })
+    // context.pubsub.publish("NEW_LINK", newLink)
+  
+    return newLink
+  }
 
 async function signup(parent, args, context, info){
     // 1: Encrypt the users password, using the bcrypt.js librar that I will install soon
@@ -22,12 +27,12 @@ async function signup(parent, args, context, info){
     
     // 3: Then I will  generate a JSON WebToken that is signed with an APP_SECRET.
     // - I have yet to write this APP_SECRET and install the jwt library
-    const token = jwt.sign({userId: args.id}, APP_SECRET)
+    const token = jwt.sign({userId: user.id}, APP_SECRET)
 
     // 4 Finally I will return the "token" and "user" in the shape that adheres to the AuthPayload object in my GraphQL scheman
     return {
-        user,
         token,
+        user
     }
 } 
 
