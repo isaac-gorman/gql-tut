@@ -54,6 +54,14 @@ let links = [
         
         console.log("updatedLink:", updatedLink)
         return updatedLink;
+      },
+      deleteLink: (parent, args) => {
+        const removeIndex = links.findIndex( link => link.id === args.id)
+        const removedLink = links[removeIndex]
+        links.splice(removeIndex, 1)
+        console.log("removeIndex:", removeIndex  )
+        console.log("removedLink:", removedLink  )
+        return removedLink
       }
     },
   }
