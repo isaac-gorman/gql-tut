@@ -6,6 +6,14 @@ const prisma = new PrismaClient()
 
 //3
 async function main() {
+ 
+  const newLink = await prisma.link.create({
+      data: {
+          description: 'Fullstack tutorial',
+          url: "www.webiste.com"
+      },
+  })
+
   const allLinks = await prisma.link.findMany()
   console.log(allLinks)
 }
