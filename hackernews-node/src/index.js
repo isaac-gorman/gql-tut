@@ -11,6 +11,8 @@ const prisma = new PrismaClient()
       feed: async (parent, args, context) => {
         return context.prisma.link.findMany()
       },
+      signup: async () => {},
+      login: async () => {}
     },
     Mutation: {
       post: (parent, args, contex, info) => {

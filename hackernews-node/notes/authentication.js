@@ -45,4 +45,12 @@
 // - - Step 3) Re-Generate the Prisma Client  
 // ~ npx prisma generate
 // - - I need to re-generate the prisma client so I can expose the database queries to my GraphQL server
+
+// - 4 Extending the GraphQL Schema
+// - Q: How will we apply schema driven development after updating our Database? 
+// - - By extending the schema based on operations that I want add to the API. In my app I want my users to be able to protect their data, so I will create a sign up and login mutation. 
+// - Q: How will the signup and login mutations act? 
+// - A: They will act simillary by utalizng the password inorder to access the AuthPaylod token
+// - A: Both will return information about the User who is signing up or logging in aswell as a "token" which will be used to authenticate request against my GraphQL API, and is all nicely bundeled within my AuthPayload Type 
+
  
