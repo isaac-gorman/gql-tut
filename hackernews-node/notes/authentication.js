@@ -53,4 +53,10 @@
 // - A: They will act simillary by utalizng the password inorder to access the AuthPaylod token
 // - A: Both will return information about the User who is signing up or logging in aswell as a "token" which will be used to authenticate request against my GraphQL API, and is all nicely bundeled within my AuthPayload Type 
 
- 
+// - 5 Implementing the resolver functions
+// - Q: What step comes after extending the GQL Schema?
+// - A: Implemnting resolver function to resolve the new mutation fields added. AKA 1. Implement an operation on the schema, 2. Then create resolver functions to resolve them
+
+// - Q: What is the logic going on in the src/utils.js file? 
+// - A: The "getUserId" function is merly a helper function that can be called within the context object which requires authentication, such as for post muation queries. 
+// - A: The getUsersId function first retrives the Authorization header (which containsthe User's JWT) from context? But how ...? 
