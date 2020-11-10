@@ -13,7 +13,6 @@ async function main() {
           url: "www.webiste.com"
       },
   })
-
   const allLinks = await prisma.link.findMany()
   console.log(allLinks)
 }
