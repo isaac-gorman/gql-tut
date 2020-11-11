@@ -8,7 +8,7 @@
 // - 1 Filtering 
 // - 2 Pagination 
 // - 3 Sorting 
-// - Returning the total amount of Link elements
+// - 4 Returning the total amount of Link elements
 
 // - Quiz Question? Which arguments are typically used to paginate through a list in the prisma client API using limit-offset pagination? 
 
@@ -40,6 +40,16 @@
 // - With Prisma it is posible to return lists of elements that are sorted (ordered) according to a specific criteria. 
 // - For example I could order the list of Links alphabetically by their URL, or description. 
 // - For the Hacker News API, you'll leave it up to the client to decide how to exactly it should be sorted and thus include all the ordering options form the Prisma API in the API of your GraphQL server. I can do this by creating an input type and an enum to represent the ordering options. 
+
+
+// - 4 Returning the total amount of link elements
+// - The last piece of information that I will make available is the total amount of Links are currently stored in the database. 
+// - To acomplished this I am going to refeactor the feed query a bit more and create a Feed type that can be retunred by my API. 
+
+
+
+
+
 
 
 
