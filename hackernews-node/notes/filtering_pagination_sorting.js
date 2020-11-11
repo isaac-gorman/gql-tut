@@ -20,5 +20,22 @@
 // - A: The first step is to think about the filtes I want to expose through my API. 
 // - - In my case I want the feed query in the API to accept a filtering string. The query then should only return the Link elements where the url or the descriptoion contain that filtering string
 
+// - 2 Pagination 
+// - Q: What is Pagination? 
+// - - A: Pagination also known as paging is the process of dividing a doucment into discrete pages, either electrinuc pages or printed pages.
+// - - A: The sequence of numbers assigned to pages in a book or periodical
+// - Q: Why is pagination a tricky in API design? 
+// - - A: On a high level there are two major ways to approaching pagination
+// - - 1: Limit-Offset: Requesting a specific chunk of the list by providing  the indices of the items to be retrived (in fact I will most likely provide the start index offset as well as a count of items to be retrived (limit) )
+// - - 2: Cursor-based: This pagination model is a bit more advanced. Every element in the element is associated with a unique ID (the cursor). Clients paginating through the list then provide the cursor of the starting element as well as a count of ityems to be rertived.
+// - Prisma supports both pagination approaches. But in this project I will iplement the limit-offset pagination. 
+
+// Limit and offset have diffrent names in the Prisma API
+// - Limit: is called "take", meaning I am taking x amount of elements after a provided start index
+// - Start: is called "skip", since I am skipping many elements in the list before collecting the items to be returned. If skip is not provided, its 0 by default. the pagination then starts from the beginning of the list
+
+
+
+
 
 
