@@ -27,5 +27,9 @@
 // - Q: What does the context argument have to do with Prisma Client? 
 // - A: We can attach an instance of the Prisma Client to the "context" argument and when intializing the server then access the Prisma Client object from within my resolvers via the context argument. *This functionality utalizes methods from Object Oriented Programming. 
 // - Q: Now what happends after I have passed an instance "a key value" in the context object within my GraphQLServer({}) object? 
-// - A: I will be able to access the instance of Prisma Client from within my resolvers, via "context.prisma" *remember that context is merly an object, and I could store any instance within it of random info. 
+// - A: I will be able to access the instance of Prisma Client from within my resolvers, via "context.prisma" *remember that context is merly an object, and I could store any instance within it of random info.
+
+
+// - 2 Updating resolver functions to utalize the prisma client
+
 
