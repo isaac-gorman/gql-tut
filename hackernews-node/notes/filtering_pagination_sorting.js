@@ -32,7 +32,15 @@
 
 // Limit and offset have diffrent names in the Prisma API
 // - Limit: is called "take", meaning I am taking x amount of elements after a provided start index
-// - Start: is called "skip", since I am skipping many elements in the list before collecting the items to be returned. If skip is not provided, its 0 by default. the pagination then starts from the beginning of the list
+// - Start: is called "skip", since I am skipping many elements in the list before collecting the items to be returned. If skip is not provided, its 0 by default. the pagination then starts from the beginning of the list. 
+
+
+
+// - 3 Sorting 
+// - With Prisma it is posible to return lists of elements that are sorted (ordered) according to a specific criteria. 
+// - For example I could order the list of Links alphabetically by their URL, or description. 
+// - For the Hacker News API, you'll leave it up to the client to decide how to exactly it should be sorted and thus include all the ordering options form the Prisma API in the API of your GraphQL server. I can do this by creating an input type and an enum to represent the ordering options. 
+
 
 
 
